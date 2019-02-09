@@ -3,13 +3,23 @@
 <table class='table'>
   <thead>
     <tr>
-      <th scope='col'>File</th>
+      <th></th>
+      <th>File</th>
+      <th>Size</th>
     </tr>
   </thead>
   <tbody>
       {% for file in files %}
       <tr>
-        <td><a href='{{path+'/'+file}}'>{{file}}</a></td>
+        {% if file[0] == 'dir' %}
+          <td><img src="{{ url_for('static', filename='icons/folder.svg') }}"/></td>
+          <td><a href='{{path+'/'+file[1]}}'>{{file[1]}}/</a></td>
+          <td></td>
+        {% else %}
+          <td><img src="{{ url_for('static', filename='icons/file.svg') }}"/></td>
+          <td><a href='{{path+'/'+file[1]}}'>{{file[1]}}</a></td>
+          <td>{{file[2]}}</td>
+        {% endif %}
       </tr>
       {% endfor %}
   </tbody>
