@@ -2,7 +2,7 @@
 {% block content %}
     <ul>
       {% for file in files %}
-      <li><a href='{{path+file}}'>{{file}}</a></li>
-      {% endfor %}
+      <li><a href='{{path+'/'+file}}'>{{file}}</a></li>
+      {% endfor %}j
     </ul>
 {% endblock %}
