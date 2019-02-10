@@ -12,17 +12,18 @@ class FileModel:
         """ Constructs a file model """
         self.path = path_helpers.ensure_trailing_slash(path)
         self.name = name
-        full_path = path + name
-        base_path = path_helpers.ensure_trailing_slash(conf.BaseConfig.FILES_BASE_PATH)
+        full_path = path_helpers.join_paths([path, name])
+        base_path = conf.BaseConfig.FILES_BASE_PATH
         if conf.BaseConfig.VIRTUAL_PATH == '':
             self.href = full_path
         else:
-             self.href = path_helpers.ensure_trailing_slash(conf.BaseConfig.VIRTUAL_PATH) + full_path
-        self.isdir = os.path.isdir(base_path + full_path)
+            self.href = path_helpers.join_paths([conf.BaseConfig.VIRTUAL_PATH, full_path])
+
+        self.isdir = os.path.isdir(path_helpers.join_paths([base_path, full_path]))
         if self.isdir:
             self.size = ''
         else:
-            self.size = os.path.getsize(base_path + full_path)
+            self.size = os.path.getsize(path_helpers.join_paths([base_path, full_path]))
 
         self.icon = self.get_file_icon()
 

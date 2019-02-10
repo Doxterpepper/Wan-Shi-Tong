@@ -17,7 +17,7 @@ class FileList:
 
     def get_files(self):
         """ Gets all files in the path """
-        full_path = path_helpers.ensure_trailing_slash(conf.BaseConfig.FILES_BASE_PATH) + self.path
+        full_path = path_helpers.join_paths([conf.BaseConfig.FILES_BASE_PATH, self.path])
         dirs = []
         files = []
 
