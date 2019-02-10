@@ -11,15 +11,9 @@
   <tbody>
       {% for file in files %}
       <tr>
-        {% if file[0] == 'dir' %}
-          <td><img src="{{ url_for('static', filename='icons/folder.svg') }}"/></td>
-          <td><a href='{{path+'/'+file[1]}}'>{{file[1]}}/</a></td>
-          <td></td>
-        {% else %}
-          <td><img src="{{ url_for('static', filename='icons/file.svg') }}"/></td>
-          <td><a href='{{path+'/'+file[1]}}'>{{file[1]}}</a></td>
-          <td>{{file[2]}}</td>
-        {% endif %}
+          <td><img src="{{ url_for('static', filename=file.icon) }}"/></td>
+          <td><a href='{{ file.full_path }}'>{{file.name}}</a></td>
+          <td>{{file.size}}</td>
       </tr>
       {% endfor %}
   </tbody>

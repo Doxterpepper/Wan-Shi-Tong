@@ -1,5 +1,5 @@
 import sys
 sys.path.append('/srv/http/')
 
-import fileserve
-application = fileserve.app
+from fileserve import fileserve
+application = fileserve.create_app()
