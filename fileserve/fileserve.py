@@ -8,8 +8,10 @@ __all__ = ['create_app']
 def create_app():
     """ Create the flask app """
     app_name = conf.BaseConfig.PROJECT
+    template_folder = conf.BaseConfig.PROJECT_ROOT + '/templates'
+    static_folder = conf.BaseConfig.PROJECT_ROOT + '/static'
 
-    app = Flask(app_name)
+    app = Flask(app_name, template_folder=template_folder, static_folder=static_folder)
     configure_blueprints(app)
     return app
 

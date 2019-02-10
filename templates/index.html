@@ -9,10 +9,10 @@
     </tr>
   </thead>
   <tbody>
-      {% for file in files %}
+      {% for file in files.files %}
       <tr>
           <td><img src="{{ url_for('static', filename=file.icon) }}"/></td>
-          <td><a href='{{ file.full_path }}'>{{file.name}}</a></td>
+          <td><a href='{{ file.href }}'>{{file.name}}</a></td>
           <td>{{file.size}}</td>
       </tr>
       {% endfor %}
