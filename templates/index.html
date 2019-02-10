@@ -1,8 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-    <ul>
+<table class='table'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>File</th>
+      <th>Size</th>
+    </tr>
+  </thead>
+  <tbody>
       {% for file in files %}
-      <li><a href='{{path+'/'+file}}'>{{file}}</a></li>
+      <tr>
+          <td><img src="{{ url_for('static', filename=file.icon) }}"/></td>
+          <td><a href='{{ file.full_path }}'>{{file.name}}</a></td>
+          <td>{{file.size}}</td>
+      </tr>
       {% endfor %}
-    </ul>
+  </tbody>
+</table>
 {% endblock %}
