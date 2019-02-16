@@ -1,0 +1,7 @@
+language: python
+  - 3.7
+install:
+  - pip install --user -U -r requirements.txt
+script:
+  - pylint -E fileserve tests
+  - python -m unittest
