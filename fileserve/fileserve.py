@@ -2,6 +2,7 @@
 
 from flask import Flask
 from . import conf
+from . import database
 
 __all__ = ['create_app']
 
@@ -12,6 +13,7 @@ def create_app():
     static_folder = conf.BaseConfig.PROJECT_ROOT + '/static'
 
     app = Flask(app_name, template_folder=template_folder, static_folder=static_folder)
+    configure_database()
     configure_blueprints(app)
     return app
 
@@ -20,3 +22,7 @@ def configure_blueprints(app):
     from . import fileserve_controller
 
     app.register_blueprint(fileserve_controller.controller.api)
+
+def configure_database():
+    """ Configure Ensure database tables are present """
+    database.deploy()

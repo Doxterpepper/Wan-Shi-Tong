@@ -2,3 +2,5 @@ flask
 mock
 pylint
 invoke
+psycopg2
+bcrypt
