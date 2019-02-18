@@ -22,6 +22,7 @@ def configure_blueprints(app):
     from . import fileserve_controller
 
     app.register_blueprint(fileserve_controller.controller.api)
+    app.register_blueprint(fileserve_controller.user_auth.controller)
 
 def configure_database():
     """ Configure Ensure database tables are present """
