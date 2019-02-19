@@ -1,7 +1,10 @@
 language: python
-  - 3.7
+matrix:
+  include:
+    - os: linux
+      python: 3.6
 install:
-  - pip install --user -U -r requirements.txt
+  - pip install -U -r requirements.txt
 script:
-  - pylint -E fileserve tests
+  - pylint fileserve tests
   - python -m unittest
