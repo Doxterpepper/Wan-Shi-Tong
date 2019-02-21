@@ -2,7 +2,6 @@
 
 from flask import Flask
 from . import conf
-from . import database
 
 __all__ = ['create_app']
 
@@ -27,4 +26,5 @@ def configure_blueprints(app):
 
 def configure_database():
     """ Configure Ensure database tables are present """
+    from . import database
     database.deploy()

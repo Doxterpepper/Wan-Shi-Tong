@@ -9,6 +9,10 @@ class BaseConfig():
     FILES_BASE_PATH = PROJECT_ROOT + '/rec/'
     STATIC_FILES = 'static'
     VIRTUAL_PATH = ''
+    DATABASE_NAME = 'WanShiTong'
+    DATABASE_USER = 'admin'
+    DATABASE_HOST = 'localhost'
+    DATABASE_PASSWORD = None
 
     DEBUG = False
     TESTING = False
