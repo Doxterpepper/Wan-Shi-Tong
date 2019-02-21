@@ -15,4 +15,4 @@ def lint(c):
 @task
 def debug(c):
     """ Run project with flask in debug mode """
-    c.run('FLASK_APP=wsgi_app.py FLASK_DEBUG=True flask run')
+    c.run('FLASK_APP=wsgi_app.py FLASK_DEBUG=True flask run -p 5501')

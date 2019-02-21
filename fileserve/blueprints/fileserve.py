@@ -5,7 +5,7 @@ from flask import Blueprint, render_template, send_file, session, redirect, url_
 from .. import conf
 from .. import filemodel
 
-api = Blueprint('fileserve_controller', __name__, url_prefix='/')
+api = Blueprint('fileserve', __name__, url_prefix='/')
 
 @api.route('/')
 def index():

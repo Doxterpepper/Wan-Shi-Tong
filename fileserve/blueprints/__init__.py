@@ -1,3 +1,3 @@
 """ Controller for fileserver """
-from . import controller
+from . import fileserve
 from . import user_auth

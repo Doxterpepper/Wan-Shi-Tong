@@ -20,10 +20,10 @@ def create_app():
 
 def configure_blueprints(app):
     """ Configurate blueprints for flask app """
-    from . import fileserve_controller
+    from . import blueprints
 
-    app.register_blueprint(fileserve_controller.controller.api)
-    app.register_blueprint(fileserve_controller.user_auth.controller)
+    app.register_blueprint(blueprints.fileserve.api)
+    app.register_blueprint(blueprints.user_auth.controller)
 
 def configure_database():
     """ Configure Ensure database tables are present """

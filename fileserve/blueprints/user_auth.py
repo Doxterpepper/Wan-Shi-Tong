@@ -15,7 +15,7 @@ controller = Blueprint('auth_controller', __name__, url_prefix='/')
 def login():
     """ Render login page """
     if 'username' in session:
-        return redirect(url_for('fileserve_controller.index'))
+        return redirect(url_for('fileserve.index'))
 
     return render_template('login.html')
 
@@ -33,7 +33,7 @@ def login_post():
 
     session['username'] = username
 
-    return redirect(url_for('fileserve_controller.index'))
+    return redirect(url_for('fileserve.index'))
 
 @controller.route('/logout')
 def logout():
