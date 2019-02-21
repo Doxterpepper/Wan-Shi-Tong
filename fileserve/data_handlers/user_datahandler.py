@@ -4,9 +4,7 @@ from ..user_model.user_model import User
 
 class UserDataHandler:
     """ User data handler """
-    def __init__(self, db):
-        """ Intitialize the datahandler with the database connection """
-        self.db = db
+    db = None
 
     def get_user_password(self, username):
         """ Select password from database using username and return a User object """

@@ -1,13 +1,9 @@
 """ Define user auth controller """
 
 from flask import Blueprint, render_template, redirect, url_for, session, request
+from .. import dependency_resolver
 
-# TODO: Build a small dependency resolver
-from ..business.user_business import UserBusiness
-from ..database import BaseDatabase
-from ..data_handlers.user_datahandler import UserDataHandler
-
-user_business = UserBusiness(UserDataHandler(BaseDatabase()))
+user_business = dependency_resolver.resolve('UserBusiness')
 
 controller = Blueprint('auth_controller', __name__, url_prefix='/')
 

@@ -4,9 +4,7 @@ import bcrypt
 
 class UserBusiness:
     """ User business class """
-    def __init__(self, user_datahandler):
-        """ Initialize user business """
-        self.user_datahandler = user_datahandler
+    user_datahandler = None
 
     def validate(self, username, password):
         """ Check if username and password are valid """

@@ -22,7 +22,8 @@ class TestUserBusiness(unittest.TestCase):
         mock_data_handler = MagicMock()
         mock_data_handler.get_user_password.return_value = user
 
-        user_business = business.user_business.UserBusiness(mock_data_handler)
+        user_business = business.user_business.UserBusiness()
+        user_business.user_datahandler = mock_data_handler
 
         # Act
         is_valid = user_business.validate(username, password)
