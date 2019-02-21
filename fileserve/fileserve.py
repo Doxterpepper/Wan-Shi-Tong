@@ -12,11 +12,19 @@ def create_app():
     static_folder = conf.BaseConfig.PROJECT_ROOT + '/static'
 
     app = Flask(app_name, template_folder=template_folder, static_folder=static_folder)
+    app.secret_key = b'0asdfi8%2!o19283h'
+    configure_database()
     configure_blueprints(app)
     return app
 
 def configure_blueprints(app):
     """ Configurate blueprints for flask app """
-    from . import fileserve_controller
+    from . import blueprints
 
-    app.register_blueprint(fileserve_controller.controller.api)
+    app.register_blueprint(blueprints.fileserve.api)
+    app.register_blueprint(blueprints.user_auth.controller)
+
+def configure_database():
+    """ Configure Ensure database tables are present """
+    from . import database
+    database.deploy()
