@@ -31,3 +31,12 @@ body {
   background-color: #3498db;
   color: #FFFFFF;
 }
+
+.hover-table tr:hover > td{
+  background-color: #b9bfc9;
+}
+
+.hover-table a {
+  text-decoration: none;
+  color: black;
+}
