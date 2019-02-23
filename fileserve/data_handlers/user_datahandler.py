@@ -1,6 +1,6 @@
 """ Handles interfacing with the database for users """
 
-from ..user_model.user_model import User
+from ..models.user_model import User
 
 class UserDataHandler:
     """ User data handler """
