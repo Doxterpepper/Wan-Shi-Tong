@@ -4,7 +4,7 @@ from unittest.mock import MagicMock
 import unittest
 import bcrypt
 from fileserve import business
-from fileserve.user_model.user_model import User
+from fileserve.models.user_model import User
 
 class TestUserBusiness(unittest.TestCase):
     """ Test cases for user business logic """
