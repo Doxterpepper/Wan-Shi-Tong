@@ -4,7 +4,6 @@ body {
 }
 
 .login-card {
-  margin-top: 10rem;
   background-color: #2e3131;
   color: #FFFFFF;
   width: 23rem;
@@ -22,9 +21,11 @@ body {
 }
 
 .header-box {
-  margin-bottom: 3rem;
-  background-color: #2e3131;
+  /* background-color: #A9754F; */
+  background-color: #B93A32;
   color: #FFFFFF;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
 }
 
 .btn-login {
@@ -33,7 +34,7 @@ body {
 }
 
 .hover-table tr:hover > td{
-  background-color: #b9bfc9;
+  background-color: #5C979C;
 }
 
 .hover-table a {
