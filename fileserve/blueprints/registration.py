@@ -3,6 +3,7 @@
 from flask import Blueprint, redirect, session, url_for, render_template, request
 from .. import dependency_resolver
 from ..models.user_model import User
+from ..helpers.view_helpers import require_auth
 from ..exceptions.invalid_user import InvalidUserException
 from ..exceptions.invalid_input import InvalidInputException
 
@@ -11,13 +12,11 @@ registration_business = dependency_resolver.resolve('RegistrationBusiness')
 
 reg_endpoint = Blueprint('registration', __name__, url_prefix='/registration')
 
+
 @reg_endpoint.route('/generate-url', methods=['GET'])
+@require_auth
 def generate_url():
     """ Generate a invite page """
-    # Must be logged in, otherwise go to the login page
-    if 'username' not in session:
-        return redirect(url_for('auth_controller.login'))
-
     # Must be admin, otherwise go to the index
     if not user_business.is_admin(session['username']):
         return redirect(url_for('fileserve.index'))
@@ -67,3 +66,4 @@ def validate_create(form, code):
             raise InvalidInputException('Passwords do not match')
 
     return (username, password)
+
