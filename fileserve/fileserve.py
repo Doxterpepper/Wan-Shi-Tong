@@ -23,6 +23,7 @@ def configure_blueprints(app):
 
     app.register_blueprint(blueprints.fileserve.api)
     app.register_blueprint(blueprints.user_auth.controller)
+    app.register_blueprint(blueprints.registration.reg_endpoint)
 
 def configure_database():
     """ Configure Ensure database tables are present """

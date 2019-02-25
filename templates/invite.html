@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% include 'navigation.html' %}
+
+  <label>Invite URL</label>
+  <input class='form-control' type='text' value='{{url}}{{url_for('registration.register', code=invite_code)}}' readonly>
+{% endblock %}
