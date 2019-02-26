@@ -64,5 +64,3 @@ class TestRegistrationBusiness(unittest.TestCase):
         valid = user_business.check_registration_code('')
 
         self.assertFalse(valid)
-
-

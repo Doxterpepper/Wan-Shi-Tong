@@ -1,7 +1,7 @@
 """ Define controller """
 
 import os
-from flask import Blueprint, render_template, send_file, session, redirect, url_for
+from flask import Blueprint, render_template, send_file, session
 from ..helpers.view_helpers import require_auth
 from .. import conf
 from ..models.filelist import FileList

@@ -2,9 +2,7 @@
 
 from flask import Blueprint, redirect, session, url_for, render_template, request
 from .. import dependency_resolver
-from ..models.user_model import User
 from ..helpers.view_helpers import require_auth
-from ..exceptions.invalid_user import InvalidUserException
 from ..exceptions.invalid_input import InvalidInputException
 
 user_business = dependency_resolver.resolve('UserBusiness')
@@ -39,20 +37,21 @@ def create_account(code):
         return redirect(url_for('auth_controller.login'))
 
     try:
-        username, password = validate_create(request.form, code)
+        username, password = validate_create(request.form)
     except InvalidInputException as e:
         return render_template('register.html', invite_code=code, error=e.message)
 
     try:
         user_business.save(username, password)
-    except InvalidUserException as e:
+    except InvalidInputException as e:
         return render_template('register.html', invite_code=code, error=e.message)
 
     session['username'] = username
 
     return redirect(url_for('fileserve.index'))
 
-def validate_create(form, code):
+def validate_create(form):
+    """ Validate creation of user """
     required = ['username', 'password', 're-password']
     for param in required:
         if not param in request.form or not form[param]:
@@ -63,7 +62,6 @@ def validate_create(form, code):
     re_password = request.form['re-password']
 
     if password != re_password:
-            raise InvalidInputException('Passwords do not match')
+        raise InvalidInputException('Passwords do not match')
 
     return (username, password)
-

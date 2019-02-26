@@ -56,20 +56,5 @@ class TestUserBusiness(unittest.TestCase):
             # Assert
             self.assertEqual(is_admin, admin)
 
-    def test_save(self):
-        """ Test the save method """
-        username = 'username'
-        password = 'password1!'
-        hashed_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
-
-        mock_data_handler = MagicMock()
-        correct_hash = None
-        user_business = business.user_business.UserBusiness()
-        user_business.user_datahandler = mock_data_handler
-
-        user_business.save('test_username', 'test_password')
-        mock_data_handler.save_user.assert_called_once()
-
 if __name__ == '__main__':
     unittest.main()
-

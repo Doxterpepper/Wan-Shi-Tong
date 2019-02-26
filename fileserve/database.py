@@ -3,6 +3,7 @@
 import bcrypt
 import psycopg2
 from .conf import BaseConfig
+from .queries.user_queries import UserQueries
 
 class BaseDatabase:
     """ Database wrapper """
@@ -37,15 +38,7 @@ def deploy():
 
         default_username = 'dock'
         default_password = bcrypt.hashpw('password1!'.encode(), bcrypt.gensalt())
-        cursor.execute('''
-            INSERT INTO Users
-            (
-                Username,
-                Password,
-                UserLevel
-            )
-            VALUES (%s, %s, %s);
-        ''', [default_username, default_password.decode(), 1])
+        cursor.execute(UserQueries.insert_user, [default_username, default_password.decode(), 1])
 
         print('attempting to create registration code table')
         cursor.execute('''

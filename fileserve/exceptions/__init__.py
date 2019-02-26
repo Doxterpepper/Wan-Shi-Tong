@@ -1,2 +1,2 @@
 """ Project exceptions """
-from . import invalid_user
+from . import invalid_input

@@ -3,7 +3,7 @@
 class InvalidInputException(Exception):
     """ Invalid user exception """
     status_code = 400
-    
+
     def __init__(self, message, status_code=None, payload=None):
         """ Init invalid user exception """
         Exception.__init__(self)

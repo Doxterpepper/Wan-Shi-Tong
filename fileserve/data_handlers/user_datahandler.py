@@ -1,7 +1,8 @@
 """ Handles interfacing with the database for users """
 
 from ..models.user_model import User
-from ..exceptions.invalid_user import InvalidUserException
+from ..exceptions.invalid_input import InvalidInputException
+from ..queries.user_queries import UserQueries
 
 class UserDataHandler:
     """ User data handler """
@@ -11,12 +12,7 @@ class UserDataHandler:
         """ Select password from database using username and return a User object """
         connection = self.db.get_connection()
         with connection.cursor() as cursor:
-            cursor.execute('''
-                SELECT Password, UserLevel 
-                FROM Users 
-                WHERE Username = %s
-            ''', [username])
-
+            cursor.execute(UserQueries.select_password_userlevel, [username])
             result = cursor.fetchone()
             if result is None:
                 return None
@@ -28,23 +24,11 @@ class UserDataHandler:
         """ Saves a user model """
         connection = self.db.get_connection()
         with connection.cursor() as cursor:
-            cursor.execute('''
-                SELECT Username
-                FROM Users
-                WHERE Username=%s;
-            ''', [user.username])
+            cursor.execute(UserQueries.select_username, [user.username])
 
             if cursor.fetchone() is not None:
-                raise InvalidUserException('User already exists')
+                raise InvalidInputException('User already exists')
 
-            cursor.execute('''
-                INSERT INTO Users
-                (
-                    Username,
-                    Password,
-                    UserLevel
-                )
-                VALUES (%s, %s, %s)
-            ''', [user.username, user.password, user.user_level])
+            cursor.execute(UserQueries.insert_user, [user.username, user.password, user.user_level])
         connection.commit()
         return True

@@ -10,7 +10,7 @@ def test(c):
 @task
 def lint(c):
     """ Run pylint """
-    c.run('pylint fileserve')
+    c.run('pylint fileserve tests')
 
 @task
 def debug(c):
