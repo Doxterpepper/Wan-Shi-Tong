@@ -19,13 +19,13 @@ def login():
 def login_post():
     """ Login """
     if not 'username' in request.form or not 'password' in request.form:
-        return render_template('login.html')
+        return render_template('login.html', error='Username and Password fields required')
 
     username = request.form['username']
     password = request.form['password']
 
     if not user_business.validate(username, password):
-        return render_template('login.html')
+        return render_template('login.html', error='Invalid username or password')
 
     session['username'] = username
 

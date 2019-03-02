@@ -1,6 +1,7 @@
 """ Config file for plant_tracker """
 
 import os
+from datetime import timedelta
 
 class BaseConfig():
     """ Base config for plant tracker """
@@ -16,6 +17,8 @@ class BaseConfig():
 
     DEBUG = False
     TESTING = False
+
+    CODE_TIMEOUT = timedelta(hours=3)
 
     ADMINS = ['mail@dockoneal.com']
 
