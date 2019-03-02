@@ -15,6 +15,8 @@ api = Blueprint('fileserve', __name__, url_prefix='/')
 @require_auth
 def index():
     """ Empty path gives 404 so we need a separate endpoint for home """
+    if 'username' not in session:
+        return redirect(url_for('auth_controller.login'))
     username = session['username']
     is_admin = user_business.is_admin(username)
 

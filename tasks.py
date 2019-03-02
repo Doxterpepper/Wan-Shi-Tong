@@ -5,7 +5,12 @@ from invoke import task
 @task
 def test(c):
     """ Run unit tests """
-    c.run('python -m unittest')
+    c.run('python -m unittest tests/*.py')
+
+@task
+def integration(c):
+    """ Run integration tests """
+    c.run('python -m unittest integration_tests/*.py')
 
 @task
 def lint(c):
