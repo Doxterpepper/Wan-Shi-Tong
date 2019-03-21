@@ -13,7 +13,6 @@ def create_app():
 
     app = Flask(app_name, template_folder=template_folder, static_folder=static_folder)
     app.secret_key = b'0asdfi8%2!o19283h'
-    configure_database()
     configure_blueprints(app)
     return app
 
@@ -24,8 +23,3 @@ def configure_blueprints(app):
     app.register_blueprint(blueprints.fileserve.api)
     app.register_blueprint(blueprints.user_auth.controller)
     app.register_blueprint(blueprints.registration.reg_endpoint)
-
-def configure_database():
-    """ Configure Ensure database tables are present """
-    from . import database
-    database.deploy()
