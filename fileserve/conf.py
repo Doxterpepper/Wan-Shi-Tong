@@ -19,6 +19,7 @@ class BaseConfig():
     TESTING = False
 
     CODE_TIMEOUT = timedelta(hours=3)
+    SESSION_TIMEOUT = timedelta(minutes=5)
 
     ADMINS = ['mail@dockoneal.com']
 
