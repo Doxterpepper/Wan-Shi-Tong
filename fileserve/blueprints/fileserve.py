@@ -6,6 +6,7 @@ from ..helpers.view_helpers import require_auth
 from .. import conf
 from ..models.filelist import FileList
 from .. import dependency_resolver
+from ..helpers import path_helpers
 
 user_business = dependency_resolver.resolve('UserBusiness')
 
@@ -25,7 +26,7 @@ def index():
 @require_auth
 def file_path(path):
     """ Take an arbitrary path and return the files or file """
-    fileserve_source = conf.BaseConfig.FILES_BASE_PATH
+    fileserve_source = path_helpers.ensure_trailing_slash(conf.BaseConfig.FILES_BASE_PATH)
     username = session['username']
     is_admin = user_business.is_admin(username)
 
