@@ -14,7 +14,7 @@
       {% for file in files.files %}
       <tr>
           <td><img src="{{ url_for('static', filename=file.icon) }}"/></td>
-          <td><a href='{{ file.href }}'>{{file.name}}</a></td>
+          <td class=click><a href='{{ file.href }}'>{{file.name}}</a></td>
           <td>{{file.size}}</td>
       </tr>
       {% endfor %}
