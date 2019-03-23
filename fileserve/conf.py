@@ -18,8 +18,10 @@ class BaseConfig():
     DEBUG = False
     TESTING = False
 
+    MAX_LOGIN_RETRIES = 6
     CODE_TIMEOUT = timedelta(hours=3)
     SESSION_TIMEOUT = timedelta(minutes=5)
+    BAN_TIMEOUT = timedelta(minutes=6)
 
     ADMINS = ['mail@dockoneal.com']
 

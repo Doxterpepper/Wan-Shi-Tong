@@ -18,5 +18,5 @@ def is_authorized():
     return 'username' in session and 'timestamp' in session and check_timeout()
 
 def check_timeout():
-    """ Checks session for validity """
+    """ Checks timeout on session"""
     return datetime.utcnow() - session['timestamp'] < BaseConfig.SESSION_TIMEOUT
