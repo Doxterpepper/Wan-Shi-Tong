@@ -1,16 +1,62 @@
-/*
-.content {
-  margin: auto;
-  width: 50%;
-  border: 3px solid black;
-  padding: 10px;
+body {
+  /* "Solitude", perfect for Wan Shi Tong */
+  background-color: grey;
 }
 
-.content ul {
-  list-style-type: none;
-  padding-left: 0;
+.login-card {
+  background-color: #2e3131;
+  color: #FFFFFF;
+  width: 23rem;
+  justify-content: center;
+  padding: 25;
+  height: 32rem;
+  border-radius: 15px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.7);
 }
 
-.content ul li {
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
-*/
+
+.header-box {
+  /* background-color: #A9754F; */
+  background-color: grey;
+  color: #000000;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+.btn-login {
+  background-color: #3498db;
+  color: #FFFFFF;
+}
+
+.explorer {
+  margin-top: 4em;
+  background: #FFFFFF;
+  border-radius: 25px;
+  border: 2px solid #666;
+}
+
+.hover-table {
+  background: #FFFFFF;
+}
+
+.hover-table tr:hover > td{
+  background-color: #E8E7E5;
+}
+
+.hover-table a {
+  text-decoration: none;
+  color: black;
+}
+
+.click a {
+  display: block;
+}
+
+.hover-color:hover {
+  background-color: #E8E7E5;
+}
