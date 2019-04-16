@@ -33,4 +33,16 @@ def file_path(path):
     if os.path.isdir(fileserve_source + path):
         filemodel_list = FileList(path)
         return render_template('index.html', files=filemodel_list, is_admin=is_admin)
+    
+    extension = path.split('.')[-1]
+    if extension == 'mp4':
+        return render_template('video.html', path=path, is_admin=is_admin)
+
+    return send_file(fileserve_source + path)
+
+@api.route('/stream/<path:path>')
+@require_auth
+def stream_video(path):
+    """ retrieve a video """
+    fileserve_source = path_helpers.ensure_trailing_slash(conf.BaseConfig.FILES_BASE_PATH)
     return send_file(fileserve_source + path)

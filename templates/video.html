@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-  <video width=320 height=240 controls>
-    <source src='{{path}}' type='video/mp4'>
+  <div class=container>
+  <video id='my-video' class='video-js vjs-default-skin vjs-big-play-centered' controls preload='auto' data-setup='{"fluid": true}'>
+    <source src="{{url_for('fileserve.stream_video', path=path)}}" type="video/mp4">
     Your browser does not support videos!
   </video>
+  </div>
 {% endblock %}
